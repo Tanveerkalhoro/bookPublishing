@@ -1,0 +1,10 @@
+RewriteEngine on
+RewriteRule ^home$ index.php
+RewriteRule ^author$ author.php
+RewriteRule ^coming-soon$ coming-soon.php
+RewriteRule ^top-seller$ top-seller.php
+RewriteRule ^contact$ contact.php
+RewriteRule ^about$ about.php
+RewriteRule ^book$ book.php
+RewriteRule ^blog$ blog.php
+RewriteRule ^blog-single$  blog-single.php
