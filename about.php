@@ -12,7 +12,7 @@
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate mb-0 text-center">
-          	<p class="breadcrumbs mb-0"><span class="mr-2"><a href="index.html">Home <i class="fa fa-chevron-right"></i></a></span> <span>About us <i class="fa fa-chevron-right"></i></span></p>
+          	<p class="breadcrumbs mb-0"><span class="mr-2"><a href="index.php">Home <i class="fa fa-chevron-right"></i></a></span> <span>About us <i class="fa fa-chevron-right"></i></span></p>
             <h1 class="mb-0 bread">About Us</h1>
           </div>
         </div>
@@ -25,7 +25,7 @@
 					<div class="col-md-10">
 	          <div class="heading-section text-center ftco-animate pb-4">
 	          	<span class="subheading">Welcome to Book Publishing Company</span>
-	            <h2>Welcome to Publishing Company</h2>
+	            <h2>Welcome to Vidya Book Publisher</h2>
 	          </div>
 	          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
 	          <blockquote class="blockquote my-5">
@@ -41,12 +41,12 @@
 		<section class="ftco-section ftco-no-pt">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-6 img img-3 d-flex justify-content-center align-items-center" style="background-image: url(images/about-1.jpg);">
+					<div class="col-md-6 img img-3 d-flex justify-content-center align-items-center" style="background-image: url(images/tanveer-1.jpg);">
 					</div>
 					<div class="col-md-6 wrap-about pl-md-5 ftco-animate py-5">
 	          <div class="heading-section">
-	          	<span class="subheading">Welcome To Publishing Company</span>
-	            <h2 class="mb-4">Publishing Company Created By Authors</h2>
+	          	<span class="subheading">Welcome to Vidya Book Publisher</span>
+	            <h2 class="mb-4">Publishing Company Created By Author Sardar Buriro</h2>
 
 	            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
 	            <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country.</p>

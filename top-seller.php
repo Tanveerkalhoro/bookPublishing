@@ -91,12 +91,20 @@
 						if($count > 0) {
 							$total_page = ceil($count / $record_per_page);
 						} ?>
-		              <ul> <?php 
+		              <ul> 
+					  <?php 
+					  if( $page_no > 1){
+						  echo'<li><a href="top-seller?page_no='.($page_no -1).' ">Prev</a></li>';
+					  }
 						 for($i=1 ; $i <= $total_page ; $i++){ ?>
 		                <li class="<?php if($i == $page_no) { echo 'active';} ?>"><a href="top-seller?page_no=<?php echo $i; ?>"><?php echo $i; ?></a></li>
-						<?php } ?>
+						<?php } 
+						if($total_page > $page_no){
+							echo'<li><a href="top-seller?page_no='.($page_no +1).' ">Next</a></li>';
+						}?>
 		              </ul>
 		            </div>
+					
 		          </div>
 		        </div>
           </div> <!-- .col-md-8 -->

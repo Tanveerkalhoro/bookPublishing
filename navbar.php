@@ -1,7 +1,7 @@
 <?php
 include("connection.php");
 
-$sql = "SELECT * FROM `page` ";
+$sql = "SELECT * FROM `page` ORDER BY sort_order ";
 $result = mysqli_query($conn,$sql);
 $count = mysqli_num_rows($result);
 

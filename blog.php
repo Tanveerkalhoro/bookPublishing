@@ -92,6 +92,9 @@ if(isset($_GET['page_no'])){
                      ?>
                       <ul>
                          <?php
+                          if( $page_no > 1){
+                            echo'<li><a href="blog.php?page_no='.($page_no -1).' ">Prev</a></li>';
+                          }
                         for ($i = 1; $i <= $total_pages; $i++) { ?>
                           <li class="<?php 
                           if($i == $page_no){
@@ -99,7 +102,10 @@ if(isset($_GET['page_no'])){
                           }?>">
                             <a href="blog?page_no=<?php echo $i; ?>"><?php echo $i; ?></a>
                             </li>
-                          <?php } ?>
+                          <?php }
+                          if($total_pages > $page_no){
+                            echo'<li><a href="blog.php?page_no='.($page_no +1).' ">Next</a></li>';
+                          } ?>
                       </ul>
                   </div>
               </div>

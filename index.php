@@ -180,6 +180,17 @@
 			 }?>
     			
 
+
+				<?php
+				$sql1 = "SELECT a.*, b.category_name , c.author_name
+						FROM book a 
+						INNER JOIN category b ON a.category_id = b.category_id
+						INNER JOIN author c ON a.author_id = c.author_id
+						GROUP BY coming_soon ORDER BY coming_soon DESC LIMIT 3 ";
+				$result = mysqli_query($conn,$sql1);
+				$count = mysqli_num_rows($result);
+				if($count > 0) {
+					while  ($book = mysqli_fetch_assoc($result)){ ?>
     			<div class="col-md-6 col-lg-4 d-flex">
     				<div class="book-wrap d-lg-flex">
     					<div class="img d-flex justify-content-end" style="background-image: url(images/book-4.jpg);">
@@ -199,65 +210,15 @@
     						</div>
     					</div>
     					<div class="text p-4 order-md-first">
-    						<p class="mb-2"><span class="price">$9.00</span></p>
-    						<h2><a href="#">All The Letters I Should Have Sent</a></h2>
+    						<p class="mb-2"><span class="price">RS:&nbsp<?php echo $book['price_id']; ?></span></p>
+    						<h2><a href="book_review.php?book_id=<?php echo $book['book_id'];?>"><?php echo $book['book_name']; ?></a></h2>
     						<span class="position">By John Nathan Muller</span>
     					</div>
     				</div>
     			</div>
+				<?php }
+			 }?>
 
-    			<div class="col-md-6 col-lg-4 d-flex">
-    				<div class="book-wrap d-lg-flex">
-    					<div class="img d-flex justify-content-end" style="background-image: url(images/book-4.jpg);">
-    						<div class="in-text">
-    							<a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to cart">
-    								<span class="flaticon-shopping-cart"></span>
-    							</a>
-    							<a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-    								<span class="flaticon-heart-1"></span>
-    							</a>
-    							<a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Quick View">
-    								<span class="flaticon-search"></span>
-    							</a>
-    							<a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Compare">
-    								<span class="flaticon-visibility"></span>
-    							</a>
-    						</div>
-    					</div>
-    					<div class="text p-4 order-md-first">
-    						<p class="mb-2"><span class="price">$9.00</span></p>
-    						<h2><a href="#">All The Letters I Should Have Sent</a></h2>
-    						<span class="position">By John Nathan Muller</span>
-    					</div>
-    				</div>
-    			</div>				
-
-    			<div class="col-md-6 col-lg-4 d-flex">
-    				<div class="book-wrap d-lg-flex">
-    					<div class="img d-flex justify-content-end" style="background-image: url(images/book-4.jpg);">
-    						<div class="in-text">
-    							<a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to cart">
-    								<span class="flaticon-shopping-cart"></span>
-    							</a>
-    							<a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-    								<span class="flaticon-heart-1"></span>
-    							</a>
-    							<a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Quick View">
-    								<span class="flaticon-search"></span>
-    							</a>
-    							<a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Compare">
-    								<span class="flaticon-visibility"></span>
-    							</a>
-    						</div>
-    					</div>
-    					<div class="text p-4 order-md-first">
-    						<p class="mb-2"><span class="price">$9.00</span></p>
-    						<h2><a href="#">All The Letters I Should Have Sent</a></h2>
-    						<span class="position">By John Nathan Muller</span>
-    					</div>
-    				</div>
-    			</div>				
-    			
     		</div>
     	</div>
     </section>
@@ -275,81 +236,42 @@
         <div class="row ftco-animate">
           <div class="col-md-12">
             <div class="carousel-testimony owl-carousel ftco-owl">
-              <div class="item">
-                <div class="testimony-wrap py-4">
-                	<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></div>
-                  <div class="text">
-                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <div class="d-flex align-items-center">
-                    	<div class="user-img" style="background-image: url(images/person_1.jpg)"></div>
-                    	<div class="pl-3">
-		                    <p class="name">Roger Scott</p>
-		                    <span class="position">Marketing Manager</span>
-		                  </div>
-	                  </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap py-4">
-                	<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></div>
-                  <div class="text">
-                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <div class="d-flex align-items-center">
-                    	<div class="user-img" style="background-image: url(images/person_2.jpg)"></div>
-                    	<div class="pl-3">
-		                    <p class="name">Roger Scott</p>
-		                    <span class="position">Marketing Manager</span>
-		                  </div>
-	                  </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap py-4">
-                	<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></div>
-                  <div class="text">
-                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <div class="d-flex align-items-center">
-                    	<div class="user-img" style="background-image: url(images/person_3.jpg)"></div>
-                    	<div class="pl-3">
-		                    <p class="name">Roger Scott</p>
-		                    <span class="position">Marketing Manager</span>
-		                  </div>
-	                  </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap py-4">
-                	<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></div>
-                  <div class="text">
-                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <div class="d-flex align-items-center">
-                    	<div class="user-img" style="background-image: url(images/person_1.jpg)"></div>
-                    	<div class="pl-3">
-		                    <p class="name">Roger Scott</p>
-		                    <span class="position">Marketing Manager</span>
-		                  </div>
-	                  </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap py-4">
-                	<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></div>
-                  <div class="text">
-                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <div class="d-flex align-items-center">
-                    	<div class="user-img" style="background-image: url(images/person_2.jpg)"></div>
-                    	<div class="pl-3">
-		                    <p class="name">Roger Scott</p>
-		                    <span class="position">Marketing Manager</span>
-		                  </div>
-	                  </div>
-                  </div>
-                </div>
-              </div>
+				
+				<div class="item"> 
+					<?php
+						$sql5 = "SELECT a.* , b.`post_id`
+								FROM post_comment a
+								LEFT JOIN post b ON a.`post_id` = b.`post_id`
+								WHERE 1=1 "; 
+						if(isset($_GET['post_id'])){
+							$post_id =$_GET['post_id'];
+						$sql5 .= " AND a.post_id= '$post_id' ";     
+						} 
+						$result5 = mysqli_query($conn,$sql5);
+						$count5 = mysqli_num_rows($result5);
+						if($count5 > 0) {
+						while ( $data5 = mysqli_fetch_assoc($result5)){ ?>
+						<div class="testimony-wrap py-4">
+							<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></div>
+								<div class="text">
+									<p class="mb-4"><?php echo $data5['comment_text']; ?></p>
+									<div class="d-flex align-items-center">
+									<div class="user-img"  style="background-image: url(<?php echo $data5['user_imag']; ?>)"></div>
+										<div class="pl-3">
+											<p class="name"><?php echo $data5['user_name']; ?></p>
+											<span class="position">Marketing Manager</span>
+										</div>
+									</div>
+								</div>
+								<?php 
+									}
+								} ?>
+							</div>
+						</div>
+				</div>
+			 
+              
+              
             </div>
           </div>
         </div>
@@ -498,7 +420,8 @@
                 	</div>
                 </div>
                 <h3 class="heading mb-3"><a href="blog-single?post_id=<?php echo $row['post_id'];?>"><?php echo $row['post_title'];?></a></h3>
-                <p><?php echo $row['post_description'];?></p>
+				<p><?php echo strlen($row['post_description']) > 130 ? substr($row['post_description'], 0, 130) . '...' : $row['post_description'];?></p>
+                <a href="blog-single?post_id=<?php echo $row['post_id'];?>" class="btn btn-primary">ReadMore</a>
               </div>
             </div>
           </div>
