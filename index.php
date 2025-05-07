@@ -155,15 +155,7 @@
     				<div class="book-wrap d-lg-flex">
     					<div class="img d-flex justify-content-end" style="background-image: url(<?php echo $book['book_img']; ?>);">
     						<div class="in-text">
-    							<a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to cart">
-    								<span class="flaticon-shopping-cart"></span>
-    							</a>
-    							<a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-    								<span class="flaticon-heart-1"></span>
-    							</a>
-    							<a href="book_review.php?book_id=<?php echo $book['book_id'];?>" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Quick View">
-    								<span class="flaticon-search"></span>
-    							</a>
+    							
     							<a href="book_review.php?book_id=<?php echo $book['book_id'];?>" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Compare">
     								<span class="flaticon-visibility"></span>
     							</a>
@@ -195,15 +187,7 @@
     				<div class="book-wrap d-lg-flex">
     					<div class="img d-flex justify-content-end" style="background-image: url(images/book-4.jpg);">
     						<div class="in-text">
-    							<a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to cart">
-    								<span class="flaticon-shopping-cart"></span>
-    							</a>
-    							<a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-    								<span class="flaticon-heart-1"></span>
-    							</a>
-    							<a href="book_review.php?book_id=<?php echo $book['book_id'];?>" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Quick View">
-    								<span class="flaticon-search"></span>
-    							</a>
+    							
     							<a href="book_review.php?book_id=<?php echo $book['book_id'];?>" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Compare">
     								<span class="flaticon-visibility"></span>
     							</a>
@@ -226,56 +210,50 @@
     <section class="ftco-section testimony-section ftco-no-pb">
     	<div class="img img-bg border" style="background-image: url(images/bg_4.jpg);"></div>
     	<div class="overlay"></div>
-      <div class="container">
-        <div class="row justify-content-center mb-5">
-          <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
-          	<span class="subheading">Testimonial</span>
-            <h2 class="mb-3">Kinds Words From Clients</h2>
-          </div>
-        </div>
-        <div class="row ftco-animate">
-          <div class="col-md-12">
-            <div class="carousel-testimony owl-carousel ftco-owl">
-				
-				<div class="item"> 
-					<?php
-						$sql5 = "SELECT a.* , b.`post_id`
-								FROM post_comment a
-								LEFT JOIN post b ON a.`post_id` = b.`post_id`
-								WHERE 1=1 "; 
-						if(isset($_GET['post_id'])){
-							$post_id =$_GET['post_id'];
-						$sql5 .= " AND a.post_id= '$post_id' ";     
-						} 
-						$result5 = mysqli_query($conn,$sql5);
-						$count5 = mysqli_num_rows($result5);
-						if($count5 > 0) {
-						while ( $data5 = mysqli_fetch_assoc($result5)){ ?>
-						<div class="testimony-wrap py-4">
-							<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></div>
-								<div class="text">
-									<p class="mb-4"><?php echo $data5['comment_text']; ?></p>
-									<div class="d-flex align-items-center">
-									<div class="user-img"  style="background-image: url(<?php echo $data5['user_imag']; ?>)"></div>
-										<div class="pl-3">
-											<p class="name"><?php echo $data5['user_name']; ?></p>
-											<span class="position">Marketing Manager</span>
-										</div>
+        <div class="container">
+			<div class="row justify-content-center mb-5">
+				<div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+					<span class="subheading">Testimonial</span>
+					<h2 class="mb-3">Kinds Words From Clients</h2>
+				</div>
+				</div>
+				<div class="row ftco-animate">
+					<div class="col-md-12">
+						<div class="carousel-testimony owl-carousel ftco-owl">
+							<div class="item"> 
+									<div class="testimony-wrap py-4">
+												<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></div>
+												<?php
+													$sql5 = "SELECT a.* , b.`post_id`
+															FROM post_comment a
+															LEFT JOIN post b ON a.`post_id` = b.`post_id` WHERE 1=1 "; 
+														if(isset($_GET['post_id'])){
+															$post_id =$_GET['post_id'];
+														$sql5 .= " AND a.post_id= '$post_id' ";  } 
+														$result5 = mysqli_query($conn,$sql5);
+														$count5 = mysqli_num_rows($result5);
+														if($count5 > 0) {
+															while ( $data5 = mysqli_fetch_assoc($result5)){ ?>
+															<div class="text">
+																<p class="mb-4"><?php echo $data5['comment_text']; ?></p>
+																<div class="d-flex align-items-center">
+																<div class="user-img"  style="background-image: url(<?php echo $data5['user_imag']; ?>)"></div>
+																<div class="pl-3">
+																	<p class="name"><?php echo $data5['user_name']; ?></p>
+																	<span class="position">Marketing Manager</span>
+																</div>
+															</div>
+												</div>
+												<?php 
+												}
+											} ?>
 									</div>
-								</div>
-								<?php 
-									}
-								} ?>
 							</div>
 						</div>
+					</div>
 				</div>
-			 
-              
-              
             </div>
-          </div>
         </div>
-      </div>
     </section>
 
 

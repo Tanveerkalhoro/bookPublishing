@@ -59,15 +59,7 @@
 		    				<div class="book-wrap book-wrap-2 d-md-flex">
 		    					<div class="img img-2 d-flex justify-content-end" style="background-image: url(<?php echo $book['book_img']; ?>);">
 		    						<div class="in-text">
-		    							<a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to cart">
-		    								<span class="flaticon-shopping-cart"></span>
-		    							</a>
-		    							<a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-		    								<span class="flaticon-heart-1"></span>
-		    							</a>
-		    							<a href="book_review.php?book_id=<?php echo $book['book_id'];?>" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Quick View">
-		    								<span class="flaticon-search"></span>
-		    							</a>
+		    							
 		    							<a href="book_review.php?book_id=<?php echo $book['book_id'];?>" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Compare">
 		    								<span class="flaticon-visibility"></span>
 		    							</a>

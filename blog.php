@@ -27,7 +27,9 @@ if(isset($_GET['page_no'])){
                 </div>
             </div>
         </div>
+        
     </section>
+    
     <section class="ftco-section">
         <div class="container">
           <div class="row d-flex">
@@ -77,10 +79,15 @@ if(isset($_GET['page_no'])){
 
                           </div>
                       </div>
+
                   </div>
                 <?php }
-              }?>
+              }else {
+								echo "<p> Their is no Blog in this catagory </p>";
+							}?>
+              
           </div>
+          
           <div class="row mt-5">
               <div class="col text-center">
                   <div class="block-27">
@@ -107,11 +114,15 @@ if(isset($_GET['page_no'])){
                             echo'<li><a href="blog.php?page_no='.($page_no +1).' ">Next</a></li>';
                           } ?>
                       </ul>
+                      
                   </div>
+                  
               </div>
-
+              
           </div>
+          
         </div>
+        
     </section>
 
     <?php include("footer.php"); ?>

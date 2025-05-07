@@ -84,28 +84,28 @@ if(isset($is_submit)) {
                         </div>
                     </div>
                     <div class="about-author d-flex p-4 bg-light">
-                        <div class="bio mr-5">
-                            <?php 
-                            $sql4 = "SELECT a.* ,  b.`author_name` , b.`author_intro` , b.`author_img` 
+                        <?php 
+                        $sql4 = "   SELECT a.* ,  b.`author_name` , b.`author_intro` , b.`author_img` 
                                     FROM book a
                                     INNER JOIN author b ON a.`book_id` = b.`author_id` WHERE 1 = 1 " ;
-                                    if(isset($_GET['book_id'])){
-                                        $book_id = $_GET['book_id'];
-                            $sql4 .= " AND a.book_id = '$book_id' "; }
-                            $result4 = mysqli_query($conn,$sql4);
-                            $count4 = mysqli_num_rows($result4);
-                            if($count4 > 0 ) {
-                                while ( $data4 = mysqli_fetch_assoc($result4)) { ?>
-                            <img src="<?php echo $data4['author_img'] ;?>" alt="Image placeholder" class="img-fluid mb-4">
-                        </div>
-                        <div class="desc">
-                            <h3><?php echo $data4['author_name']; ?></h3>
-                            <p><?php echo $data4['author_intro']; ?></p>
-                        </div>
-                        <?php }
-                            }        
-                            ?>
-                    </div>
+                        if(isset($_GET['book_id'])){
+                            $book_id = $_GET['book_id'];
+                            $sql4 .= " AND a.book_id = '$book_id' "; 
+                        }
+                        $result4    = mysqli_query($conn,$sql4);
+                        $count4     = mysqli_num_rows($result4);
+                        if($count4 > 0 ) {
+                            while ( $data4 = mysqli_fetch_assoc($result4)) { ?>
+                                <div class="bio mr-5">
+                                    <img src="<?php echo $data4['author_img'] ;?>" alt="Image placeholder" class="img-fluid mb-4">
+                                </div>
+                                <div class="desc">
+                                    <h3><?php echo $data4['author_name']; ?></h3>
+                                    <p><?php echo $data4['author_intro']; ?></p>
+                                </div>
+                            <?php }
+                        }?>
+                     </div>
                     <div class="pt-5 mt-5">
                         <h3 class="mb-5">Comments About Book</h3>
                         <ul class="comment-list">
@@ -173,74 +173,7 @@ if(isset($is_submit)) {
                         </div>
                     </div>
                 </div> <!-- .col-md-8 -->
-                <div class="col-lg-4 sidebar pl-lg-5 ftco-animate">
-                    <div class="sidebar-box">
-                        <form action="#" class="search-form">
-                            <div class="form-group">
-                                <span class="fa fa-search"></span>
-                                <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="sidebar-box ftco-animate">
-                        <div class="categories">
-                            <h3>Relative Books</h3>
-                            <?php
-                            $sql = "SELECT * FROM `category` ";
-                            $result = mysqli_query($conn,$sql);
-                            $count = mysqli_num_rows($result);
-                            if($count > 0) {
-                            while($data = mysqli_fetch_assoc($result)){ ?>
-                            <li><a href="blog?post_category_id=<?php echo $data['category_id'];?>"><?php echo $data['category_name'];?><span class="fa fa-chevron-right"></span></a></li>
-                            <?php }
-			                	}?>
-                        </div>
-                    </div>
-                    <div class="sidebar-box ftco-animate">
-                        <h3>Recent Blog</h3>
-                           <?php 
-                            $sql = "SELECT *,YEAR(post_date) AS YEAR, MONTHNAME(post_date) AS MONTH, DAY(post_date) AS DAY
-                            FROM post GROUP BY post_date ORDER BY post_date DESC LIMIT 3;";
-                            $result = mysqli_query($conn,$sql);
-                            $count = mysqli_num_rows($result);
-                            if($count > 0) {
-                            while  ($row = mysqli_fetch_assoc($result)){ ?>
-                            <div class="block-21 mb-4 d-flex">
-                                <a class="blog-img mr-4"
-                                    style="background-image: url(<?php echo $row ['post_img'] ; ?>);"></a>
-                                <div class="text">
-                                    <h3 class="heading"><a href="blog-single?post_id=<?php echo $row['post_id'];?>">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                                    <div class="meta">
-                                        <div><a href="#"><span class="fa fa-calendar"></span><?php echo date('Y-M-d', strtotime($row['post_date'])); ?></a></div>
-                                        <div><a href="#"><span class="fa fa-user"></span> Admin</a></div>
-                                        <div><a href="#"><span class="fa fa-comment"></span> 19</a></div>
-                                    </div>
-                                </div>
-                             </div>
-                        <?php }
-                           }?>
-                    </div>
-                    <div class="sidebar-box ftco-animate">
-                        <h3>Tag Cloud</h3>
-                        <div class="tagcloud">
-                            <?php
-                            $sql = "SELECT * FROM `category` ";
-                            $result = mysqli_query($conn,$sql);
-                            $count = mysqli_num_rows($result);
-                            if($count > 0) {
-                            while($data = mysqli_fetch_assoc($result)){ ?>
-                            <a href="#" class="tag-cloud-link"><?php echo $data['category_name'];?></a>
-                            <?php }
-			                	}?>
-                        </div>
-                    </div>
-                    <div class="sidebar-box ftco-animate">
-                        <h3>Quotation of The Day !</h3>
-                        <p>What you do today can improve all your tomorrows. Never give up. Today is hard,
-                            tomorrow will be worse, but the day after tomorrow will be sunshine.
-                            Someone is sitting in the shade today because someone planted a tree a long time ago..</p>
-                    </div>
-                </div>
+               <?php include("book_sidebar.php"); ?>
 
             </div>
         </div>

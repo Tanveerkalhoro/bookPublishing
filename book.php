@@ -28,10 +28,7 @@ include("connection.php");
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
   <?php include("navbar.php"); ?>
-
-    
     <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_5.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
@@ -50,7 +47,7 @@ include("connection.php");
 					<div class="row mb-4">
 					  <h4 class="product-select">Select Category of Books</h4>
 						<div class="col-md-12 d-flex justify-content-between align-items-center">
-							<select class="selectpicker" name="category_id" id="category_id" multiple>
+							<select class="selectpicker"  multiple>
 							<?php
 								$sql = "SELECT * FROM `category` ";
 								$result = mysqli_query($conn,$sql);
@@ -83,7 +80,8 @@ include("connection.php");
                 $sql1 = $sql." LIMIT ".$limit.", ".$total_per_page." ";
 				if(isset($_GET['category_id'])){
 					$category_id = $_GET['category_id'];
-					$sql .= " AND a.category_id ='$category_id' ";
+					$sql .= " AND WHERE  a.category_id ='$category_id' ";
+					//echo $sql ; die;
 				}
 				$result = mysqli_query($conn,$sql);
 				$count = mysqli_num_rows($result);
@@ -95,15 +93,7 @@ include("connection.php");
     				<div class="book-wrap d-lg-flex">
     					<div class="img d-flex justify-content-end" style="background-image: url(<?php echo $book['book_img']; ?>);">
     						<div class="in-text" name="book_id" id="book_id">
-    							<a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to cart">
-    								<span class="flaticon-shopping-cart"></span>
-    							</a>
-    							<a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
-    								<span class="flaticon-heart-1"></span>
-    							</a>
-    							<a href="book_review.php?book_id=<?php echo $book['book_id'];?>" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Quick View">
-    								<span class="flaticon-search"></span>
-    							</a>
+    							
     							<a href="book_review.php?book_id=<?php echo $book['book_id'];?>" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Compare">
     								<span class="flaticon-visibility"></span>
     							</a>
@@ -117,6 +107,8 @@ include("connection.php");
     				</div>
     			</div>			
 				<?php }
+				} else {
+					echo "<p> Their is no book in this catagory </p>";
 				}?>
     	    </div>
     		<div class="row mt-5">
