@@ -5,7 +5,7 @@
 
   	<?php include("navbar.php"); ?>
 
-    <section class="hero-wrap" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+    <section class="hero-wrap" style="background-image: url('images/bg_11.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text align-items-center">
@@ -121,9 +121,18 @@
 	          	<span class="subheading">Welcome To Publishing Company</span>
 	            <h2 class="mb-4">Publishing Company Created By Authors</h2>
 
-	            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-	            <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country.</p>
-
+	            <p>Knowledge (Vidya) is there to diverge humans from animals, it enables humans to think and reason, 
+					it creates artifacts to comprehend the world and universal orders. To impart knowledge, “Vidya Publications” 
+					has been organized to strengthen the readers' (especially the younger generation) mental approaches to develop 
+					semantical and pragmatical understandings in the world of literacy. “Vidya Publication” aims to provide a ground 
+					to acknowledge progressive, ideological, and intellectual minds to contribute. However, its especial intention is
+					 to address Sindhi Community, who is culturally, literary, and philosophically rich, about the worth of progressivism
+					  and humanism that seeks advancement for human’s living conditions through social reforms based on advanced knowledge.
+					   The initiative of “Vidya Publication” has been symbolized from the prominent figure of Moen-Jo-Daro, known as Coin, 
+					which pragmatically represented the advanced society of trade and commerce. Revitalizing prior 
+					civilization is the crucial component to enable technological advanced generation about the oldest advanced 
+					civilization because they are the roots of the current Sindhi societies who had put efforts to comprehend 
+					the world without resources and advanced artifacts.</p>
 	            <a href="author.php" class="btn btn-primary">View All Our Authors</a>
 	          </div>
 
@@ -208,7 +217,7 @@
     </section>
   
     <section class="ftco-section testimony-section ftco-no-pb">
-    	<div class="img img-bg border" style="background-image: url(images/bg_4.jpg);"></div>
+    	<div class="img img-bg border" style="background-image: url(images/bg_home.jpg);"></div>
     	<div class="overlay"></div>
         <div class="container">
 			<div class="row justify-content-center mb-5">
@@ -218,40 +227,43 @@
 				</div>
 				</div>
 				<div class="row ftco-animate">
+				<?php  
+						$sql5 = "SELECT a.* , b.`post_id`
+					FROM post_comment a
+					LEFT JOIN post b ON a.`post_id` = b.`post_id` WHERE 1=1 "; 
+					if(isset($_GET['post_id'])){
+						$post_id =$_GET['post_id'];
+						$sql5 .= " AND a.post_id= '$post_id' ";  } 
+						$result5 = mysqli_query($conn,$sql5);
+						$count5 = mysqli_num_rows($result5);
+							if($count5 > 0) {
+						while ( $data5 = mysqli_fetch_assoc($result5)){ ?>
 					<div class="col-md-12">
 						<div class="carousel-testimony owl-carousel ftco-owl">
 							<div class="item"> 
 									<div class="testimony-wrap py-4">
-												<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></div>
-												<?php
-													$sql5 = "SELECT a.* , b.`post_id`
-															FROM post_comment a
-															LEFT JOIN post b ON a.`post_id` = b.`post_id` WHERE 1=1 "; 
-														if(isset($_GET['post_id'])){
-															$post_id =$_GET['post_id'];
-														$sql5 .= " AND a.post_id= '$post_id' ";  } 
-														$result5 = mysqli_query($conn,$sql5);
-														$count5 = mysqli_num_rows($result5);
-														if($count5 > 0) {
-															while ( $data5 = mysqli_fetch_assoc($result5)){ ?>
-															<div class="text">
-																<p class="mb-4"><?php echo $data5['comment_text']; ?></p>
-																<div class="d-flex align-items-center">
-																<div class="user-img"  style="background-image: url(<?php echo $data5['user_imag']; ?>)"></div>
-																<div class="pl-3">
-																	<p class="name"><?php echo $data5['user_name']; ?></p>
-																	<span class="position">Marketing Manager</span>
-																</div>
-															</div>
+										<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></div>
+										<div class="text">
+												<p class="mb-4"><?php echo $data5['comment_text']; ?></p>
+												<div class="d-flex align-items-center">
+													<div class="user-img"  style="background-image: url(<?php echo $data5['user_imag']; ?>)"></div>
+													<div class="pl-3">
+														<p class="name"><?php echo $data5['user_name']; ?></p>
+														<span class="position">Marketing Manager</span>
+													</div>
 												</div>
-												<?php 
-												}
-											} ?>
+												
+										</div>
+										
 									</div>
 							</div>
 						</div>
 					</div>
+					<?php 
+					}
+				} ?>
 				</div>
+				
             </div>
         </div>
     </section>

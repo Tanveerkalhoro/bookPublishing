@@ -11,7 +11,7 @@ $count = mysqli_num_rows($result);
 				<div class="col-md-8 order-md-last">
 					<div class="row">
 						<div class="col-md-6 text-center">
-							<a class="navbar-brand" href="index.php">Vidya <span>Publisher</span> <small>Book Publishing Company</small></a>
+							<a class="navbar-brand" href="index.php">Vidya <span>Publications</span> <small>Book Publishing Company</small></a>
 						</div>
 						<div class="col-md-6 d-md-flex justify-content-end mb-md-0 mb-3">
 							<form action="#" class="searchform order-lg-last">
