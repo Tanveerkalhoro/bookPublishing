@@ -54,21 +54,24 @@ if(isset($is_submit)) {
                     <div>
                         <?php
                         if(isset($_GET['book_id'])){
-                                $book_id = $_GET['book_id'];} 
-                        $sql3 = " SELECT *  FROM book  WHERE book_id='$book_id' ";
-                        //echo $sql3; die ;
-                        $result3 = mysqli_query($conn,$sql3);
-                        $count = mysqli_num_rows($result3);
-                        if($count > 0) {
-                            while($row = mysqli_fetch_assoc($result3)){ ?>
-                            <p>
-                                <img src="<?php echo $row['book_img'];?>" alt="" class="img-fluid">
-                            </p>
-                            <h2 class="mb-3"><?php echo $row['book_name'];?></h2>
-                            <p><?php echo $row['review'];?></p>
-                            <?php 
-                            }
-                        }?>
+                            $book_id = $_GET['book_id'];
+                            $sql3 = " SELECT *  FROM book  WHERE book_id='$book_id' ";
+                            //echo $sql3; die ;
+                            $result3 = mysqli_query($conn,$sql3);
+                            $count = mysqli_num_rows($result3);
+                            if($count > 0) {
+                                while($row = mysqli_fetch_assoc($result3)){ ?>
+                                <p>
+                                    <img src="<?php echo $row['book_img'];?>" alt="" class="img-fluid">
+                                </p>
+                                <h2 class="mb-3"><?php echo $row['book_name'];?></h2>
+                                <p><?php echo $row['review'];?></p>
+                                <?php 
+                                }
+                            } 
+                        } else {
+                                echo "<h1> Their is no Book found </h1>";
+                            }?>
                     </div>
                     <div class="tag-widget post-tag-container mb-5 mt-5">
                         <div class="tagcloud">
@@ -110,32 +113,33 @@ if(isset($is_submit)) {
                         <h3 class="mb-5">Comments About Book</h3>
                         <ul class="comment-list">
                             <?php
-                            $sql6 = "SELECT a.*, b.`book_id`
-                                    FROM `book_comment` a
-                                    LEFT JOIN book b ON a.`book_id` = b.`book_id` WHERE 1=1 "; 
+                         
                             if(isset($_GET['book_id'])){
-                                $book_id =$_GET['book_id'];
-                                $sql6 .= " AND a.book_id= '$book_id' ";} 
-                            // echo $sql6;
-                            $result6 = mysqli_query($conn,$sql6);
-                            $count6 = mysqli_num_rows($result6);
-                            if($count6 > 0) {
-                                while ( $data6 = mysqli_fetch_assoc($result6)){ ?>
-                            <li class="comment">
-                                <div class="vcard bio">
-                                    <img src="<?php echo $data6['user_imag']; ?>" alt="Image placeholder">
-                                </div>
-                                <div class="comment-body">
-                                    <h3><?php echo $data6['user_name']; ?></h3>
-                                    <div class="meta"><?php echo $data6['comment_date']; ?></div>
-                                    <p><?php echo $data6['comment_text']; ?></p>
-                                </div>
-                            </li>
-                            <?php 
-                              }
+                                    $book_id =$_GET['book_id'];
+                                    $sql6 = "SELECT a.*, b.`book_id`
+                                    FROM `book_comment` a
+                                    LEFT JOIN book b ON a.`book_id` = b.`book_id` WHERE a.book_id= '$book_id' "; 
+                                    // echo $sql6;
+                                    $result6 = mysqli_query($conn,$sql6);
+                                    $count6 = mysqli_num_rows($result6);
+                                    if($count6 > 0) {
+                                        while ( $data6 = mysqli_fetch_assoc($result6)){ ?>
+                                    <li class="comment">
+                                        <div class="vcard bio">
+                                            <img src="<?php echo $data6['user_imag']; ?>" alt="Image placeholder">
+                                        </div>
+                                        <div class="comment-body">
+                                            <h3><?php echo $data6['user_name']; ?></h3>
+                                            <div class="meta"><?php echo $data6['comment_date']; ?></div>
+                                            <p><?php echo $data6['comment_text']; ?></p>
+                                        </div>
+                                    </li>
+                                    <?php 
+                                    }
+                                }
                             } else {
-                                echo "<p>non has comment on this post</p>";
-                            } 
+                                    echo "<p>non has comment on this post</p>";
+                                } 
                             ?>
                         </ul>
                         <!-- END comment-list -->

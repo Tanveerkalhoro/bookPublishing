@@ -7,5 +7,6 @@ RewriteRule ^contact$ contact.php
 RewriteRule ^about$ about.php
 RewriteRule ^book$ book.php
 RewriteRule ^blog$ blog.php
-RewriteRule ^cart$ cart.php
+RewriteRule ^cart$ cart.php 
+RewriteRule ^book_review$  book_review.php
 RewriteRule ^blog-single$  blog-single.php

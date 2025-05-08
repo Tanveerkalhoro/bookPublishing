@@ -46,12 +46,13 @@
 					<div class="col-md-6 wrap-about pl-md-5 ftco-animate py-5">
 	          <div class="heading-section">
 	          	<span class="subheading">Welcome to Vidya Book Publisher</span>
-	            <h2 class="mb-4">Publishing Company Created By Author Sardar Buriro</h2>
+	            <h2 class="mb-4">Website Developed By Software Eng: Tanveer & Co.</h2>
 
-	            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-	            <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country.</p>
+	            <p>A dedicated and versatile Full-Stack Web Developer with a strong foundation in PHP and web application development. Bringing 7 years of experience in the IT secto.</p>
+	            <p>He are currently focused on transitioning to a Service Quality Officer role within the banking sector, driven by his experience in handling customer feedback, quality assurance, and performance metrics.
+his academic background includes a Bachelor’s and Master’s in Computer System Engineering</p>
 
-	            <a href="#" class="btn btn-primary">View All Our Authors</a>
+	            <a href="https://github.com/Tanveerkalhoro" class="btn btn-primary">View All his Work</a>
 	          </div>
 
 					</div>

@@ -41,11 +41,8 @@ if(isset($is_submit)) {
 <html lang="en">
 <?php include("header.php"); ?>
 <body>
-
-    <?php include("navbar.php"); ?>
-
+<?php include("navbar.php"); ?>
     <!-- END nav -->
-
     <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_5.jpg');"
         data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
@@ -68,29 +65,29 @@ if(isset($is_submit)) {
                 <div class="col-lg-8 ftco-animate">
                     <div>
                         <?php
-                $sql = "SELECT a.*, b.post_category_name , c.author_name
-                        FROM post a 
-                        LEFT JOIN post_category b ON a.category_id = b.post_category_id
-                        LEFT JOIN post_author c ON a.author_id = c.author_id
-                        WHERE 1=1 ";
-              if(isset($_GET['post_id'])){
-                    $post_id = $_GET['post_id'];
-                $sql .= " AND a.post_id='$post_id' ";
-              } 
-
-              // echo $sql;
-              $result = mysqli_query($conn,$sql);
-              $count = mysqli_num_rows($result);
-              if($count > 0) {
-                while  ($row = mysqli_fetch_assoc($result)){ ?>
-                        <p>
-                            <img src="<?php echo $row['post_img'];?>" alt="" class="img-fluid">
-                        </p>
-                        <h2 class="mb-3"><?php echo $row['post_title'];?></h2>
-                        <p><?php echo $row['post_description'];?></p>
-                        <?php 
-                }
-              }?>
+                            if(isset($_GET['post_id'])){
+                                $post_id = $_GET['post_id'];
+                                $sql = "SELECT a.*, b.post_category_name , c.author_name
+                                FROM post a 
+                                LEFT JOIN post_category b ON a.category_id = b.post_category_id
+                                LEFT JOIN post_author c ON a.author_id = c.author_id
+                                WHERE a.post_id='$post_id' ";
+                                // echo $sql;
+                                $result = mysqli_query($conn,$sql);
+                                $count = mysqli_num_rows($result);
+                                if($count > 0) {
+                                    while  ($row = mysqli_fetch_assoc($result)){ ?>
+                                        <p>
+                                            <img src="<?php echo $row['post_img'];?>" alt="" class="img-fluid">
+                                        </p>
+                                        <h2 class="mb-3"><?php echo $row['post_title'];?></h2>
+                                        <p><?php echo $row['post_description'];?></p>
+                                        <?php 
+                                    }
+                                }
+                            } else {
+                                echo "<h1> Their is no Blog Found!</h1>";
+                            };    ?>
                     </div>
                     <div class="tag-widget post-tag-container mb-5 mt-5">
                         <div class="tagcloud">
@@ -105,82 +102,78 @@ if(isset($is_submit)) {
 			                	}?>
                         </div>
                     </div>
-
                     <div class="about-author d-flex p-4 bg-light">
-                        <div class="bio mr-5">
-                        <?php
-                            $sql = "SELECT a.*, b.post_category_name , c.author_name ,c.post_author_img
-                                    FROM post a 
-                                    LEFT JOIN post_category b ON a.category_id = b.post_category_id
-                                    LEFT JOIN post_author c ON a.author_id = c.author_id
-                                    WHERE 1=1 ";
-                                if(isset($_GET['post_id'])){
-                                        $post_id = $_GET['post_id'];
-                                    $sql .= " AND a.post_id='$post_id' ";
-                                } 
-
-                                $result = mysqli_query($conn,$sql);
-                                $count = mysqli_num_rows($result);
-                                if($count > 0) {
-                                    while  ($at = mysqli_fetch_assoc($result)){ ?>
-                            <img src="<?php echo $at['post_author_img'];?>" alt="Image placeholder" class="img-fluid mb-4">
-                        </div>
-                        <div class="desc">
-                            <h3><?php echo $at['author_name'];?></h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem
-                                necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa
-                                sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
-                        </div>
+                            <?php
+                            if(isset($_GET['post_id'])){
+                                    $post_id = $_GET['post_id'];
+                                $sql = "SELECT a.*, b.post_category_name , c.author_name ,c.post_author_img
+                                FROM post a 
+                                LEFT JOIN post_category b ON a.category_id = b.post_category_id
+                                LEFT JOIN post_author c ON a.author_id = c.author_id
+                                                WHERE a.post_id='$post_id' ";
+                                        $result = mysqli_query($conn,$sql);
+                                        $count = mysqli_num_rows($result);
+                                    if($count > 0) {
+                                            while  ($at = mysqli_fetch_assoc($result)){ ?>
+                                <div class="bio mr-5">
+                                    <img src="<?php echo $at['post_author_img'];?>" alt="Image placeholder" class="img-fluid mb-4">
+                                </div>
+                                <div class="desc">
+                                    <h3><?php echo $at['author_name'];?></h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem
+                                        necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa
+                                        sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
+                                </div>
+                             <?php }
+                                }
+                            } else {
+                                echo "<h1>Their is no record found!</h1>";
+                             }    ?>
                     </div>
-                    <?php }
-			                	}?>
-
-
                     <div class="pt-5 mt-5">
                         <h3 class="mb-5">6 Comments</h3>
                         <ul class="comment-list">
                             <?php
-                            $sql5 = "SELECT a.* , b.`post_id`
-                                    FROM post_comment a
-                                    LEFT JOIN post b ON a.`post_id` = b.`post_id`
-                                    WHERE 1=1 "; 
                             if(isset($_GET['post_id'])){
                                 $post_id =$_GET['post_id'];
-                            $sql5 .= " AND a.post_id= '$post_id' ";     
-                            } 
-                            $result5 = mysqli_query($conn,$sql5);
-                            $count5 = mysqli_num_rows($result5);
-                            if($count5 > 0) {
-                                while ( $data5 = mysqli_fetch_assoc($result5)){ ?>
-                            <li class="comment">
-                                <div class="vcard bio">
-                                    <img src="<?php echo $data5['user_imag']; ?>" alt="Image placeholder">
-                                </div>
-                                <div class="comment-body">
-                                    <h3><?php echo $data5['user_name']; ?></h3>
-                                    <div class="meta"><?php echo $data5['comment_date']; ?></div>
-                                    <p><?php echo $data5['comment_text']; ?></p>
-                                </div>
-                            </li>
-                            <?php 
-                              }
+                                $sql5 = "SELECT a.* , b.`post_id`
+                                FROM post_comment a
+                                LEFT JOIN post b ON a.`post_id` = b.`post_id`
+                                WHERE a.post_id= '$post_id' ";     
+                                $result5 = mysqli_query($conn,$sql5);
+                                $count5 = mysqli_num_rows($result5);
+                                if($count5 > 0) {
+                                    while ( $data5 = mysqli_fetch_assoc($result5)){ ?>
+                                        <li class="comment">
+                                            <div class="vcard bio">
+                                                <img src="<?php echo $data5['user_imag']; ?>" alt="Image placeholder">
+                                            </div>
+                                            <div class="comment-body">
+                                                <h3><?php echo $data5['user_name']; ?></h3>
+                                                <div class="meta"><?php echo $data5['comment_date']; ?></div>
+                                                <p><?php echo $data5['comment_text']; ?></p>
+                                            </div>
+                                        </li>
+                                        <?php 
+                                    }
+                                } else {
+                                    echo "<p>non has comment on this post</p>";
+                                } 
                             } else {
-                                echo "<p>non has comment on this post</p>";
-                            } 
-                            ?>
+                                echo "<h1>Their is no record!</h1>";
+                                }?>
                         </ul>
                         <!-- END comment-list -->
-
                         <div class="comment-form-wrap pt-5">
                             <h3 class="mb-5">Leave a comment</h3>
-                            <?php
-                            if(isset($msg)){
-                                echo $msg="You have comment successfully";
-                            }
-                            if(isset($error)){
-                                echo $error="You have comment successfully";
-                            }
-                            ?>
+                                <?php
+                                if(isset($msg)){
+                                    echo $msg="You have comment successfully";
+                                }
+                                if(isset($error)){
+                                    echo $error="You have comment successfully";
+                                }
+                                ?>
                             <form  class="p-5 bg-light" method="post">
                                 <input type="hidden" name="is_submit" value="Y">
                                 <div class="form-group">
@@ -191,7 +184,6 @@ if(isset($is_submit)) {
                                     <label for="email">Email *</label>
                                     <input type="email" name="email" class="form-control" id="email" value="<?php if(isset($email)) { echo $email; } ?>">
                                 </div>
-
                                 <div class="form-group">
                                     <label for="comment_text">Message</label>
                                     <input type="text" name="comment_text" id="comment_text" cols="30" rows="10" class="form-control" value="<?php if(isset($comment_text)) { echo $comment_text; } ?>">
@@ -199,18 +191,15 @@ if(isset($is_submit)) {
                                 <div class="form-group">
                                     <input type="submit"  placeholder="Post Comment" class="btn py-3 px-4 btn-primary">
                                 </div>
-
                             </form>
                         </div>
                     </div>
-
-               <?php include("blog_sidebar.php"); ?>
+                    <?php include("blog_sidebar.php"); ?>
+                </div>
+            </div>     
+        </div>    
     </section> <!-- .section -->
-
     <?php include("footer.php"); ?>
-
-
-
     <!-- loader -->
     <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
             <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />

@@ -114,12 +114,12 @@
     <section class="ftco-section">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-6 img img-3 d-flex justify-content-center align-items-center" style="background-image: url(images/about-1.jpg);">
+					<div class="col-md-6 img img-3 d-flex justify-content-center align-items-center" style="background-image: url(images/about-11.jpg);">
 					</div>
 					<div class="col-md-6 wrap-about pl-md-5 ftco-animate py-5">
 	          <div class="heading-section">
-	          	<span class="subheading">Welcome To Publishing Company</span>
-	            <h2 class="mb-4">Publishing Company Created By Authors</h2>
+	          	<span class="subheading">Welcome To Vidya Publications</span>
+	            <h2 class="mb-4">Vidya Publications Created By Author Sardar Buriro</h2>
 
 	            <p>Knowledge (Vidya) is there to diverge humans from animals, it enables humans to think and reason, 
 					it creates artifacts to comprehend the world and universal orders. To impart knowledge, “Vidya Publications” 
